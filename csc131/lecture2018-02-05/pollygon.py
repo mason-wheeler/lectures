@@ -10,7 +10,7 @@ def regular_polygon(t: Turtle, length: int, num_sides=4) -> None:
     """
     for count in range(num_sides):
         t.forward(length)
-        t.left(num_sides/360)
+        t.left(360/num_sides)
 
 
 def square(t: Turtle, length: int) -> None:
@@ -59,6 +59,27 @@ def octagon(t: Turtle, length: int) -> None:
     for count in range(8):
         t.forward(length)
         t.left(45)
+
+
+def radial_pattern(t: Turtle, n: int, length: int, shape) -> None:
+    """
+    Draws a radial pattern of n shapes with the given length.
+    :param t: a Turtle instance
+    :param n: number of shapes
+    :param length: length of shape side
+    :param shape: a function for drawing some shape
+    :return: none
+    """
+    for count in range(n):
+        shape(t, length)
+        t.left(360 / n)
+
+
+def test_module() ->None:
+    a_turtle = Turtle()
+    screen = Screen()
+    radial_pattern(a_turtle, n=10, length=50, shape=square)
+    sleep(10)   # pause for 5 seconds
 
 
 if __name__ == '__main__':
